@@ -5,7 +5,6 @@
 //  Created by Stephen Radford on 05/07/2018.
 //  Copyright © 2018 Cocoon Development Ltd. All rights reserved.
 //
-
 import Cocoa
 import MediaKeyTap
 
@@ -25,7 +24,7 @@ extension ViewController: MediaKeyTapDelegate {
             commandCenter.changePlaybackPositionCommand.addTarget(self, action: #selector(seek(_:)))
         }
         mediaKeyTap = MediaKeyTap(delegate: self)
-	      mediaKeyTap?.start()
+        mediaKeyTap?.start()
     }
 
     func handle(mediaKey: MediaKey, event: KeyEvent) {
@@ -88,7 +87,7 @@ extension ViewController: MediaKeyTapDelegate {
         guard let event = notification as? MPChangePlaybackPositionCommandEvent else { return }
         seek(to: event.positionTime)
     }
-    
+
     func seek(to: TimeInterval) {
         let rounded = Int(round(to))
         let js = "document.querySelector('#movie_player video').currentTime = \(rounded);"
